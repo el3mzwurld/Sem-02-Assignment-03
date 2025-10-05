@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Red Bench",
+    "category": "people",
+    "price": 3.89,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 2,
+    "name": "Egg Balloon",
+    "category": "food",
+    "price": 93.89,
+    "bestseller": false,
+    "image": "./assets/img/placeholder.png"
+  },
+  {
+    "id": 3,
+    "name": "Man",
+    "category": "people",
+    "price": 100.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 4,
+    "name": "Architecture",
+    "category": "landmarks",
+    "price": 101.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 5,
+    "name": "Samurai King Resting",
+    "category": "pets",
+    "price": 10000.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 6,
+    "name": "Lonely Tree",
+    "category": "nature",
+    "price": 15.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 7,
+    "name": "City Lights",
+    "category": "cities",
+    "price": 45.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 8,
+    "name": "Golden Gate",
+    "category": "landmarks",
+    "price": 250.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 9,
+    "name": "Pasta Bowl",
+    "category": "food",
+    "price": 12.5,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 10,
+    "name": "Mountain Peak",
+    "category": "nature",
+    "price": 180.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 11,
+    "name": "Street Portrait",
+    "category": "people",
+    "price": 25.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 12,
+    "name": "Sleeping Cat",
+    "category": "pets",
+    "price": 8.99,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 13,
+    "name": "Tokyo Night",
+    "category": "cities",
+    "price": 199.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 14,
+    "name": "Coffee Cup",
+    "category": "food",
+    "price": 5.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 15,
+    "name": "Ocean Waves",
+    "category": "nature",
+    "price": 75.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 16,
+    "name": "Brooklyn Bridge",
+    "category": "landmarks",
+    "price": 300.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 17,
+    "name": "Golden Retriever",
+    "category": "pets",
+    "price": 18.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 18,
+    "name": "Sunset Boulevard",
+    "category": "cities",
+    "price": 65.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 19,
+    "name": "Forest Path",
+    "category": "nature",
+    "price": 22.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 20,
+    "name": "Vintage Car",
+    "category": "cities",
+    "price": 150.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 21,
+    "name": "French Baguette",
+    "category": "food",
+    "price": 3.5,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 22,
+    "name": "Puppy Eyes",
+    "category": "pets",
+    "price": 12.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 23,
+    "name": "Desert Dunes",
+    "category": "nature",
+    "price": 40.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 24,
+    "name": "Eiffel Tower",
+    "category": "landmarks",
+    "price": 210.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 25,
+    "name": "City Park",
+    "category": "cities",
+    "price": 55.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 26,
+    "name": "Sushi Platter",
+    "category": "food",
+    "price": 28.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 27,
+    "name": "Persian Cat",
+    "category": "pets",
+    "price": 30.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 28,
+    "name": "Old Library",
+    "category": "landmarks",
+    "price": 175.0,
+    "bestseller": false,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 29,
+    "name": "Sunflower Field",
+    "category": "nature",
+    "price": 18.0,
+    "bestseller": true,
+    "image": "/assets/img/placeholder.png"
+  },
+  {
+    "id": 30,
+    "name": "Street Food",
+    "category": "food",
+    "price": 7.0,
+    "bestseller": false,
+    "image": "/assets/img/placgeholder.png"
+  }
+]

@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --bg-main: #fff;
+  --bg-alt: black;
+  --color-gray-light: #8e8c8c7e;
+  --color-gray-dark: #656565;
+  --font: "Archivo", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px 10px;
+  color: var(--bg-main);
+  background: var(--bg-alt);
+  border: none;
+  border-radius: 0px;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: var(--font), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 0px;
+  margin: 0px;
+  background: var(--bg-main);
+  color: var(--bg-alt);
+}
