@@ -153,6 +153,9 @@ h3 {
           color: black;
         }
       }
+      .active {
+        display: flex;
+      }
     }
   }
 
