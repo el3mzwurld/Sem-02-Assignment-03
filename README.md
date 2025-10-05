@@ -1,16 +1,73 @@
-# React + Vite
+# 🖼️ Bejamas Photo Store (React Version)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive e-commerce photo gallery built with **React**, featuring filtering, pagination, and cart management. This app is a React-based conversion of a previous vanilla JavaScript implementation, with improved state management and component logic.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✅ Features
 
-## React Compiler
+### 🛒 Cart System
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add items to cart from product cards.
+- Cart items display with name, price, and image.
+- Toggle cart visibility.
+- Clear entire cart with one click.
 
-## Expanding the ESLint configuration
+### 🔍 Product Filtering
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Category filters:** People, Pets, Food, Cities, Landmarks, Nature, Premium.
+- **Price filters:**
+  - Lower than $20
+  - $20–$100
+  - $100–$200
+  - Above $200
+- **Desktop:** Filters apply instantly when checkboxes change.
+- **Mobile:** Filters only apply when the **SAVE** button is clicked.
+- **CLEAR** resets filters and restores all products.
+
+### 📄 Pagination
+
+- 6 products per page.
+- Dynamic pagination buttons based on results.
+- Previous/Next arrows to switch pages.
+
+### 📱 Responsive Design
+
+- Mobile breakpoint: `1239px`
+- Filter UI adapts based on device width.
+
+---
+
+## 🚀 Tech Stack
+
+| Feature     | Technology          |
+| ----------- | ------------------- |
+| Framework   | React (Vite or CRA) |
+| Styling     | CSS                 |
+| State Mgmt  | useState, useEffect |
+| Data Source | `data.json`         |
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│
+├── assets/
+│ ├── img/ # All images used in UI
+│ └── data/
+│ └── data.json # Product data
+│
+├── components/
+│ └── Home.jsx # Main page logic and UI
+│
+└── assets/styles/
+└── App.css # Global styles
+```
+
+# Filtering logic
+
+```
+applyfilters()
+```
