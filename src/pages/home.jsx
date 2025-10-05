@@ -14,25 +14,27 @@ import { useState, useEffect } from "react";
 
 function Home() {
   //Products
-  const [products] = useState(productsData);
   const [filProducts, setFilProducts] = useState(productsData);
   const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
 
   //pages
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
   //Mobile checker state
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1239);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
 
   //Categories and Prices
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPrices, setSelectedPrices] = useState([]);
 
+  //mobile event states
+  const [showCart, setShowCart] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1239);
+      setIsMobile(window.innerWidth <= 1023);
     };
 
     window.addEventListener("resize", handleResize);
@@ -43,8 +45,6 @@ function Home() {
       applyFilters();
     }
   }, [selectedCategories, selectedPrices, isMobile]);
-
-  console.log(filProducts.length);
 
   const totalPages = Math.ceil(filProducts.length / itemsPerPage);
 
@@ -74,52 +74,79 @@ function Home() {
     });
   };
   const handleCategoryChange = (e) => {
-    const value = e.target.value;
-    setSelectedCategories((prev) =>
-      prev.includes(value) ? prev.filter((c) => c !== value) : [...prev, value]
-    );
+    const value = e.target.value.toLowerCase();
+    setSelectedCategories((prev) => {
+      return prev.includes(value)
+        ? prev.filter((c) => c !== value)
+        : [...prev, value];
+    });
+  };
+  const handleFilterToggle = () => {
+    setIsFilterOpen((prev) => {
+      return !prev;
+    });
   };
 
   const handlePriceChange = (e) => {
     const value = e.target.value;
-    setSelectedPrices((prev) =>
-      prev.includes(value) ? prev.filter((p) => p !== value) : [...prev, value]
-    );
+    console.log(value);
+    setSelectedPrices((prev) => {
+      return prev.includes(value)
+        ? prev.filter((p) => p !== value)
+        : [...prev, value];
+    });
   };
   const applyFilters = () => {
-    const filtered = products.filter((product) => {
-      let catMatch = true;
-      let priceMatch = true;
+    if (selectedCategories.length === 0 && selectedPrices.length === 0) {
+      setFilProducts(productsData);
+      setCurrentPage(1);
+      return;
+    }
 
-      // ✅ Category matching
+    const filtered = productsData.filter((product) => {
+      const cat = product.category.toLowerCase();
+      const price = product.price;
+
       if (selectedCategories.length > 0) {
-        if (selectedCategories.includes("premium")) {
-          if (!product.bestseller) return false;
-        }
-        if (
-          !selectedCategories.includes(product.category.toLowerCase()) &&
-          !selectedCategories.includes("premium")
-        ) {
-          return false;
-        }
-      }
+        //Premium = bestseller
+        const wantsPremium = selectedCategories.includes("premium");
+        const matchesCategory = selectedCategories.includes(cat);
+        const matchesPremium = wantsPremium && product.bestseller;
 
-      // ✅ Price matching
+        if (!(matchesCategory || matchesPremium)) return false;
+      }
       if (selectedPrices.length > 0) {
-        priceMatch = selectedPrices.some((range) => {
-          const price = product.price;
+        const matchesPrice = selectedPrices.some((range) => {
           if (range === "<20") return price < 20;
           if (range === "20-100") return price >= 20 && price <= 100;
           if (range === "100-200") return price > 100 && price <= 200;
           if (range === ">200") return price > 200;
+          return false;
         });
+        if (!matchesPrice) return false;
       }
 
-      return catMatch && priceMatch;
+      return true;
     });
 
+    console.log(filtered);
     setFilProducts(filtered);
     setCurrentPage(1);
+  };
+  const handleSave = () => {
+    applyFilters();
+    setIsFilterOpen((prev) => {
+      return !prev;
+    });
+  };
+  const handleClr = () => {
+    setFilProducts(productsData);
+    setSelectedCategories([]);
+    setSelectedPrices([]);
+    setCurrentPage(1);
+    setIsFilterOpen((prev) => {
+      return !prev;
+    });
   };
 
   return (
@@ -241,14 +268,14 @@ function Home() {
               Photographs / <span>Premium photos</span>
             </p>
 
-            <div className="ico" id="mob">
+            <div className="ico" id="mob" onClick={handleFilterToggle}>
               <img src={filMob} alt="" />
             </div>
             <div className="ico" id="desktop"></div>
           </div>
 
           <div className="container">
-            <div className="photos_filters">
+            <div className={`photos_filters ${isFilterOpen ? "active" : ""}`}>
               <div className="filters_content">
                 <div className="content_title">
                   <p>Filter</p>
@@ -262,146 +289,58 @@ function Home() {
                     <div className="cat_title">
                       <p>Category</p>
                     </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="people"
-                        id="people"
-                        className="check"
-                        value="people"
-                      />
-                      <p>People</p>
-                    </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="premium"
-                        id="premium"
-                        className="check"
-                        value="premium"
-                      />
-                      <p>Premium</p>
-                    </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="pets"
-                        id="pets"
-                        className="check"
-                        value="pets"
-                      />
-                      <p>Pets</p>
-                    </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="food"
-                        id="food"
-                        className="check"
-                        value="food"
-                      />
-                      <p>Food</p>
-                    </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="landmarks"
-                        id="landmarks"
-                        className="check"
-                        value="landmarks"
-                      />
-                      <p>Landmarks</p>
-                    </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="cities"
-                        id="cities"
-                        className="check"
-                        value="cities"
-                      />
-                      <p>Cities</p>
-                    </div>
-                    <div className="cat">
-                      <input
-                        type="checkbox"
-                        name="nature"
-                        id="nature"
-                        className="check"
-                        value="nature"
-                      />
-                      <p>Nature</p>
-                    </div>
+                    {[
+                      "people",
+                      "premium",
+                      "pets",
+                      "food",
+                      "landmarks",
+                      "cities",
+                      "nature",
+                    ].map((cat) => (
+                      <div className="cat" key={cat}>
+                        <input
+                          type="checkbox"
+                          className="check"
+                          value={cat}
+                          checked={selectedCategories.includes(cat)}
+                          onChange={handleCategoryChange}
+                        />
+                        <p>{cat.charAt(0).toUpperCase() + cat.slice(1)}</p>
+                      </div>
+                    ))}
                   </div>
                   <div className="list_prices">
                     <div className="prices_title">
                       <p>Price Range</p>
                     </div>
-                    <div className="price">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="check"
-                        value="<20"
-                      />
-                      <p>Lower than $20</p>
-                    </div>
-                    <div className="price">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="check"
-                        value="20-100"
-                      />
-                      <p>$20 - $100</p>
-                    </div>
-                    <div className="price">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="check"
-                        value="100-200"
-                      />
-                      <p>$100 - $200</p>
-                    </div>
-                    <div className="price">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="check"
-                        value=">200"
-                      />
-                      <p>More than $200</p>
-                    </div>
+                    {[
+                      { label: "Lower than $20", value: "<20" },
+                      { label: "$20 - $100", value: "20-100" },
+                      { label: "$100 - $200", value: "100-200" },
+                      { label: "More than $200", value: ">200" },
+                    ].map((range) => (
+                      <div className="price" key={range.value}>
+                        <input
+                          type="checkbox"
+                          className="check"
+                          value={range.value}
+                          checked={selectedPrices.includes(range.value)}
+                          onChange={handlePriceChange}
+                        />
+                        <p>{range.label}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
               <div className="filters_btns">
                 <div className="btns">
-                  <button
-                    className="btns_btn"
-                    id="clear"
-                    onClick={() => {
-                      setSelectedCategories([]);
-                      setSelectedPrices([]);
-                      setFilProducts([]);
-                      setCurrentPage(1);
-                    }}
-                  >
+                  <button className="btns_btn" id="clear" onClick={handleClr}>
                     CLEAR
                   </button>
-                  <button
-                    className="btns_btn"
-                    id="save"
-                    onClick={() => {
-                      applyFilters();
-                    }}
-                  >
+                  <button className="btns_btn" id="save" onClick={handleSave}>
                     SAVE
                   </button>
                 </div>
@@ -424,7 +363,10 @@ function Home() {
                       )}
                     </div>
                     <div className="txt">
-                      <p className="txt_category">{product.category}</p>
+                      <p className="txt_category">
+                        {product.category[0].toUpperCase() +
+                          product.category.slice(1)}
+                      </p>
                       <p className="txt_name">{product.name}</p>
                       <p className="txt_price">$ {product.price}</p>
                     </div>

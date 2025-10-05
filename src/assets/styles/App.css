@@ -511,6 +511,9 @@ h3 {
           }
         }
       }
+      .active {
+        display: flex;
+      }
 
       .photos_grid {
         min-height: 100vh;
@@ -738,7 +741,6 @@ h3 {
     justify-content: space-between;
     align-items: center;
 
-    /* ICON */
     .title {
       width: auto;
       height: 35px;
@@ -1121,6 +1123,9 @@ h3 {
             }
           }
         }
+      }
+      .active {
+        display: flex;
       }
 
       .photos_grid {
@@ -1555,13 +1560,13 @@ h3 {
         min-height: 80vh;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         gap: 25px;
         padding-bottom: 20px;
 
         .photos_filters {
           width: 25%;
-          height: 100%;
+          height: 70vh;
 
           .filters_btns {
             display: none;
@@ -1648,6 +1653,9 @@ h3 {
               }
             }
           }
+        }
+        .active {
+          display: flex;
         }
         .photos_grid {
           display: flex;
